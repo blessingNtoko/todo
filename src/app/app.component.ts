@@ -6,5 +6,46 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'todo';
+
+  public todoArray = [];
+  public inputText = '';
+  public updateText = '';
+
+  public addTodo() {
+    console.log('from input ->', this.inputText);
+    const todoObj = {
+      todo: this.inputText,
+      isDone: false,
+      id: '',
+      updateThis: false
+    };
+
+    this.todoArray.push(todoObj);
+    this.inputText = '';
+    console.log(this.todoArray);
+  }
+
+  public removeTodo(id: number) {
+    console.log('removed this ->', this.todoArray[id]);
+    this.todoArray.splice(id, 1);
+    console.log(this.todoArray);
+  }
+
+  public markAsDone(id: number) {
+    console.log('this is done ->', this.todoArray[id]);
+  }
+
+  public update(id: number) {
+    this.todoArray[id]['todo'] = this.updateText;
+    this.todoArray[id]['updateThis'] = false;
+    this.updateText = '';
+
+    console.log(this.todoArray);
+    console.log('updating this ->', this.todoArray[id]);
+  }
+
+  public updateTodo(id: number) {
+    this.todoArray[id]['updateThis'] = !this.todoArray[id]['updateThis'];
+    console.log('update todo ->', this.todoArray[id]);
+  }
 }
