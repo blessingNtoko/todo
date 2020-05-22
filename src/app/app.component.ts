@@ -32,7 +32,9 @@ export class AppComponent {
   }
 
   public markAsDone(id: number) {
+    this.todoArray[id]['isDone'] = true;
     console.log('this is done ->', this.todoArray[id]);
+    this.marking(id);
   }
 
   public update(id: number) {
@@ -47,5 +49,12 @@ export class AppComponent {
   public updateTodo(id: number) {
     this.todoArray[id]['updateThis'] = !this.todoArray[id]['updateThis'];
     console.log('update todo ->', this.todoArray[id]);
+  }
+
+  public marking(id: number) {
+    let listItems;
+    listItems = document.querySelectorAll('.inputTodo');
+    console.log(listItems[id]);
+    listItems[id].style.color = 'red';
   }
 }

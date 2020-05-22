@@ -3,7 +3,7 @@
 <br />
 <div *ngFor="let todo of todoArray; let i = index">
     <div>
-        <span>{{ todo.todo }} <button (click)="removeTodo(i)">Delete</button><button (click)="updateTodo(i)">Update Todo</button></span>
+        <span class="inputTodo">{{ todo.todo }} <button (click)="removeTodo(i)">Delete</button><button (click)="updateTodo(i)">Update Todo</button><button (click)="markAsDone(i)">Done</button></span>
         <br />
         <span *ngIf="todo.updateThis"><input [(ngModel)]="updateText" type="text" /><button (click)="update(i)">Update</button></span>
     </div>
